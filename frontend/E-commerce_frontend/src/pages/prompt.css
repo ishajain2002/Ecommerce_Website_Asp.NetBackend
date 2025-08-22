@@ -1,0 +1,125 @@
+/* prompt.css - ONLY modal/prompt styles, very unique class names to avoid collisions */
+
+/* Portal root (optional visual debugging - no styling required) */
+.prompt-portal-root {
+  /* empty; kept so we can find the node in DOM if needed */
+}
+
+/* Overlay: fixed, covers viewport and sits above everything */
+.prompt-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999; /* extremely high so it floats above page */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Modal box — isolated */
+.prompt-box {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 380px;
+  max-width: calc(100% - 40px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  animation: prompt-fade 160ms ease-in-out;
+}
+
+/* Title */
+.prompt-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+/* rows for label/value */
+.prompt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* available points styling */
+.prompt-available {
+  color: #666;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+/* Quantity UI */
+.prompt-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.prompt-qty-btn {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prompt-qty-btn:active { transform: translateY(1px); }
+
+.prompt-qty-value {
+  min-width: 36px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Buttons row */
+.prompt-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Save / Cancel */
+.prompt-save-btn {
+  background: #16a34a; /* green */
+  color: white;
+  border: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.prompt-cancel-btn {
+  background: #6b7280; /* gray */
+  color: white;
+  border: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* small animation */
+@keyframes prompt-fade {
+  from { opacity: 0; transform: translateY(-6px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* accessibility focus styles */
+.prompt-qty-btn:focus,
+.prompt-save-btn:focus,
+.prompt-cancel-btn:focus {
+  outline: 3px solid rgba(59,130,246,0.25);
+  outline-offset: 2px;
+}
